@@ -10,11 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotPleintje">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
+            android:name=".EventList"
+            android:exported="false" />
+        <activity
             android:name=".EventPage"
             android:exported="false" />
         <activity
-            android:name=".EventList"
-            android:exported="true">
+            android:name=".SignUpActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
