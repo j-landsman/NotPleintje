@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
-        android:id="@+id/eventCardLayout"
+        android:layout_marginHorizontal="10dp"
         android:orientation="vertical"
         >
         <androidx.cardview.widget.CardView
@@ -140,24 +140,44 @@
                     android:orientation="vertical"
                     android:background="@drawable/count_background"
                     >
-                    <TextView
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+12"
-                        android:textAlignment="center"
-                        android:textColor="@color/textBlue"
-                        android:textSize="15sp"
-                        android:id="@+id/count"
-                        android:textStyle="bold"
-                        android:padding="10dp">
-                    </TextView>
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textAlignment="center"
+                            android:textColor="@color/textBlue"
+                            android:textSize="15sp"
+                            android:id="@+id/plus"
+                            android:textStyle="bold"
+                            android:paddingVertical="10dp"
+                            android:paddingLeft="10dp">
+                        </TextView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="12"
+                            android:textAlignment="center"
+                            android:textColor="@color/textBlue"
+                            android:textSize="15sp"
+                            android:id="@+id/count"
+                            android:textStyle="bold"
+                            android:paddingVertical="10dp"
+                            android:paddingRight="10dp">
+                        </TextView>
+                    </LinearLayout>
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:maxLines="1"
-                    android:text="are going">
+                    android:text="are going"
+                    android:textColor="@android:color/darker_gray">
                 </TextView>
             </LinearLayout>
         </LinearLayout>
