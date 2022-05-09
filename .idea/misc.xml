@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/drawable/search_btn.xml" value="0.226" />
         <entry key="app/src/main/res/drawable/time_background.xml" value="0.226" />
         <entry key="app/src/main/res/layout/activity_event_page.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20018115942028986" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.20018115942028986" />

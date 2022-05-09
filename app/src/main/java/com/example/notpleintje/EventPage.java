@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class EventPage extends AppCompatActivity {
+    private ImageView cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_page);
 
-        ImageView cancel = (ImageView)findViewById(R.id.cancel_button);
+        cancel = (ImageView)findViewById(R.id.cancel_button);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

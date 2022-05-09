@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.notpleintje.Adapters.EventsRecyclerViewAdapter;
 import com.example.notpleintje.Repository.EventsRepo;
@@ -12,12 +15,21 @@ import com.example.notpleintje.Repository.EventsRepo;
 public class EventList extends AppCompatActivity {
     RecyclerView recyclerView;
     EventsRecyclerViewAdapter eventsRecyclerViewAdapter;
+    private ImageView backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_list);
         recyclerView = findViewById(R.id.recyclerView);
         initRecyclerView();
+
+        backBtn = (ImageView) findViewById(R.id.back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EventList.this, HomeActivity.class));
+            }
+        });
     }
 
     void initRecyclerView(){
@@ -27,11 +39,3 @@ public class EventList extends AppCompatActivity {
         recyclerView.setAdapter(eventsRecyclerViewAdapter);
     }
 }
-
-/*binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-        NavHostFragment.findNavController(SecondFragment.this)
-        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-        }
-        });*/
