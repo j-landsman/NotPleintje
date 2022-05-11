@@ -8,6 +8,6 @@
     <string name="location1">Goffertpark</string>
     <string name="desc1">We will play football on the grass field here, we have a football but feel free to bring your own.</string>
     <string name="browse_btn">Search For Group</string>
-    <string name="create_btn">Create Event</string>
+    <string name="create_event">Create Event</string>
     <string name="my_events_btn">My Events</string>
 </resources>

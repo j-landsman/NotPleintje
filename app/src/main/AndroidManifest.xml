@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotPleintje">
         <activity
+            android:name=".CreateActivity"
+            android:exported="false" />
+        <activity
             android:name=".EventList"
             android:exported="false" />
         <activity

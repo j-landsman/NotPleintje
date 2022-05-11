@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="event_types">
+        <item>Football</item>
+        <item>Hide &amp; Seek</item>
+        <item>Basketball</item>
+        <item>Tag</item>
+        <item>Playground</item>
+    </string-array>
+</resources>

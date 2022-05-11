@@ -53,7 +53,7 @@
             android:id="@+id/createBtn"
             android:layout_marginTop="40dp"
             android:background="@color/mainGreen"
-            android:text="@string/create_btn"
+            android:text="@string/create_event"
             android:layout_gravity="center_horizontal"
             >
         </androidx.appcompat.widget.AppCompatButton>

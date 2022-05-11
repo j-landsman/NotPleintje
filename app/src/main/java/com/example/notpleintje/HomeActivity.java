@@ -9,6 +9,7 @@ import android.view.View;
 
 public class HomeActivity extends AppCompatActivity {
     private AppCompatButton browseBtn;
+    private AppCompatButton createBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, EventList.class);
+                startActivity(intent);
+            }
+        });
+
+        createBtn = findViewById(R.id.createBtn);
+        createBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, CreateActivity.class);
                 startActivity(intent);
             }
         });
