@@ -3,9 +3,6 @@
     <string name="dashboard_title">dashboard</string>
     <string name="dashboard_heading">Events near me</string>
     <string name="search_bar_hint">search for events...</string>
-    <string name="HideSeek">Hide &amp; Seek</string>
-    <string name="location1">Goffertpark</string>
-    <string name="desc1">We will play football on the grass field here, we have a football but feel free to bring your own.</string>
     <string name="browse_btn">Search For Group</string>
     <string name="create_event">Create Event</string>
     <string name="my_events_btn">My Events</string>

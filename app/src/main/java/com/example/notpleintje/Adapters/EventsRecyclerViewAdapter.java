@@ -2,6 +2,7 @@ package com.example.notpleintje.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,17 +38,39 @@ public class EventsRecyclerViewAdapter extends RecyclerView.Adapter<EventsRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.day.setText(eventModelArrayList.get(position).getDay());
-        holder.month.setText(eventModelArrayList.get(position).getMonth());
-        holder.title.setText(eventModelArrayList.get(position).getTitle());
-        holder.place.setText(eventModelArrayList.get(position).getPlace());
-        holder.count.setText(eventModelArrayList.get(position).getCount());
-        Glide.with(holder.imageView).load(eventModelArrayList.get(position).getUrl()).into(holder.imageView);
+        String title = eventModelArrayList.get(position).getTitle();
+        String day = eventModelArrayList.get(position).getDay();
+        String month = eventModelArrayList.get(position).getMonth();
+        String place = eventModelArrayList.get(position).getPlace();
+        String count = eventModelArrayList.get(position).getCount();
+        String time = eventModelArrayList.get(position).getTime();
+        String creator = eventModelArrayList.get(position).getCreator();
+        String url = eventModelArrayList.get(position).getUrl();
+        String desc = eventModelArrayList.get(position).getDesc();
+
+        holder.title.setText(title);
+        holder.day.setText(day);
+        holder.month.setText(month);
+        holder.place.setText(place);
+        holder.count.setText(count);
+        Glide.with(holder.imageView).load(url).into(holder.imageView);
         holder.itemView.setClickable(true);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.context.startActivity(new Intent(holder.context, EventPage.class));
+                Intent intent = new Intent(holder.context, EventPage.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title",title);
+                bundle.putString("day", day);
+                bundle.putString("month", month);
+                bundle.putString("place", place);
+                bundle.putString("count", count);
+                bundle.putString("time", time);
+                bundle.putString("creator", creator);
+                bundle.putString("url", url);
+                bundle.putString("desc", desc);
+                intent.putExtras(bundle);
+                holder.context.startActivity(intent);
             }
         });
     }
