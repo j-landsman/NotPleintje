@@ -40,7 +40,7 @@ public class EventPage extends AppCompatActivity {
         eventPlace.setText(place);
 
         TextView eventDate = (TextView)findViewById(R.id.event_date);
-        eventDate.setText(dateString(day,month));
+        eventDate.setText(dateNrToLtr(day,month));
 
         TextView eventTime = (TextView)findViewById(R.id.event_time);
         eventTime.setText(time);
@@ -64,7 +64,7 @@ public class EventPage extends AppCompatActivity {
         });
     }
 
-    String dateString(String day, String month){
+    private String dateNrToLtr(String day, String month){
         String month_nr = "00";
         switch (month){
             case "JAN":

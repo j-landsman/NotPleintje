@@ -91,6 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
+                    android:id="@+id/location_input"
                     android:hint="Kronenburgerpark"
                     android:textColorHint="@color/greyDate"
                     android:maxLines="1"
@@ -113,6 +114,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="5dp"
+                    android:id="@+id/date_input"
                     android:hint="30-09"
                     android:textColorHint="@color/greyDate"
                     android:maxLines="1"
@@ -134,6 +136,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/time_input"
                     android:layout_margin="5dp"
                     android:hint="15:30"
                     android:textColorHint="@color/greyDate"
@@ -156,19 +159,21 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
+                    android:id="@+id/desc_input"
                     android:layout_margin="5dp"
                     android:hint="We have a football but feel free to bring \nyour own..."
                     android:textColorHint="@color/greyDate"
                     android:background="@color/editTextBackground"
                     android:paddingLeft="20dp"
                     android:textColor="@android:color/black"
-                    android:inputType="time"
+                    android:inputType="text"
                     >
                 </EditText>
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:id="@+id/create_event_btn"
                     app:layout_constraintTop_toBottomOf="@+id/phoneBox"
                     android:layout_marginTop="30dp"
                     android:text="@string/create_event"
