@@ -28,4 +28,5 @@
     <color name="editTextBackground">#F7F7F8</color>
     <color name="registerBtn">#2F8633</color>
     <color name="editTextSubHeading">#1D1A2F</color>
+    <color name="spinnerBackground">#393635</color>
 </resources>

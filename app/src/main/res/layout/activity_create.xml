@@ -73,8 +73,10 @@
                 <Spinner
                     android:id="@+id/event_type_spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@android:style/Widget.Holo.Spinner"
+                    android:layout_height="40dp"
+                    android:theme="@style/spinnerTheme"
+                    android:background="@color/white"
+                    android:popupBackground="@color/white"
                     android:layout_marginTop="5dp"
                     ></Spinner>
 

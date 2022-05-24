@@ -3,12 +3,17 @@ package com.example.notpleintje;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.notpleintje.Repository.EventsRepo;
 import com.google.android.material.button.MaterialButton;
@@ -16,6 +21,7 @@ import com.google.android.material.button.MaterialButton;
 public class CreateActivity extends AppCompatActivity {
     private ImageView backBtn;
     private Spinner eventTypeSpinner;
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,18 @@ public class CreateActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.event_types, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         eventTypeSpinner.setAdapter(adapter);
+        eventTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView)adapterView.getChildAt(0)).setTextColor(Color.BLACK);
+                title = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         EditText locationInputter = (EditText) findViewById(R.id.location_input);
         EditText dateInputter = (EditText) findViewById(R.id.date_input);
@@ -49,13 +67,16 @@ public class CreateActivity extends AppCompatActivity {
                 String dateInput = dateInputter.getText().toString();
                 String descInput = descInputter.getText().toString();
 
+
                 String day = dateInput.substring(0,2);
                 String monthNums = dateInput.substring(dateInput.length()-2);
                 String monthLtr = monthNumToLtr(monthNums);
-                String title = "Test Event";
                 String creator = "test creator";
 
                 EventsRepo.getEventsRepo().addEvent(day, monthLtr, title, locationInput, timeInput, creator, descInput);
+
+                Toast.makeText(getApplicationContext(), "Event created!", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(CreateActivity.this, HomeActivity.class));
             }
         });
     }
