@@ -104,38 +104,57 @@
                     >
                 </EditText>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:text="Date"
-                    android:layout_marginTop="20dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"></TextView>
-                <EditText
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_margin="5dp"
-                    android:id="@+id/date_input"
-                    android:hint="30-09"
-                    android:textColorHint="@color/greyDate"
-                    android:maxLines="1"
-                    android:background="@color/editTextBackground"
-                    android:paddingLeft="20dp"
-                    android:textColor="@android:color/black"
-                    android:inputType="date"
-                    >
-                </EditText>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:text="Time"
-                    android:layout_marginTop="20dp"
-                    android:textSize="25sp"
-                    android:textStyle="bold"></TextView>
-                <EditText
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="Date"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="25sp"
+                        android:textStyle="bold"></TextView>
+
+                    <DatePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/date_picker"
+                        android:datePickerMode="spinner"
+                        android:calendarViewShown="false"
+                        android:background="@android:color/darker_gray"
+                        >
+                    </DatePicker>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="Time"
+                        android:layout_marginTop="20dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"></TextView>
+
+                    <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/time_picker"
+                        android:timePickerMode="spinner"
+                        android:background="@android:color/darker_gray"
+                        ></TimePicker>
+                </LinearLayout>
+                <!--<EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/time_input"
@@ -148,7 +167,7 @@
                     android:textColor="@android:color/black"
                     android:inputType="time"
                     >
-                </EditText>
+                </EditText>-->
 
                 <TextView
                     android:layout_width="wrap_content"

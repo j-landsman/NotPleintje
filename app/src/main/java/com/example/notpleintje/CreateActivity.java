@@ -9,14 +9,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.notpleintje.Repository.EventsRepo;
 import com.google.android.material.button.MaterialButton;
+
+import java.sql.Time;
 
 public class CreateActivity extends AppCompatActivity {
     private ImageView backBtn;
@@ -54,8 +58,9 @@ public class CreateActivity extends AppCompatActivity {
         });
 
         EditText locationInputter = (EditText) findViewById(R.id.location_input);
-        EditText dateInputter = (EditText) findViewById(R.id.date_input);
-        EditText timeInputter = (EditText) findViewById(R.id.time_input);
+        DatePicker dateInputter = (DatePicker) findViewById(R.id.date_picker);
+        TimePicker timeInputter = (TimePicker) findViewById(R.id.time_picker);
+        timeInputter.setIs24HourView(true);
         EditText descInputter = (EditText) findViewById(R.id.desc_input);
 
         MaterialButton createEvent = (MaterialButton) findViewById(R.id.create_event_btn);
@@ -63,17 +68,16 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String locationInput = locationInputter.getText().toString();
-                String timeInput = timeInputter.getText().toString();
-                String dateInput = dateInputter.getText().toString();
+
                 String descInput = descInputter.getText().toString();
 
-
-                String day = dateInput.substring(0,2);
-                String monthNums = dateInput.substring(dateInput.length()-2);
-                String monthLtr = monthNumToLtr(monthNums);
+                String time = Integer.toString(timeInputter.getHour()) + ":" + Integer.toString(timeInputter.getMinute());
+                String day = Integer.toString(dateInputter.getDayOfMonth());
+                int monthNum = dateInputter.getMonth()+1;
+                String monthLtr = monthNumToLtr(monthNum);
                 String creator = "test creator";
 
-                EventsRepo.getEventsRepo().addEvent(day, monthLtr, title, locationInput, timeInput, creator, descInput);
+                EventsRepo.getEventsRepo().addEvent(day, monthLtr, title, locationInput, time, creator, descInput);
 
                 Toast.makeText(getApplicationContext(), "Event created!", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(CreateActivity.this, HomeActivity.class));
@@ -81,43 +85,43 @@ public class CreateActivity extends AppCompatActivity {
         });
     }
 
-    private String monthNumToLtr (String monthNums){
+    private String monthNumToLtr (int monthNum){
         String month_ltr = "JAN";
-        switch (monthNums){
-            case "01":
+        switch (monthNum){
+            case 1:
                 month_ltr = "JAN";
                 break;
-            case "02":
+            case 2:
                 month_ltr = "FEB";
                 break;
-            case "03":
+            case 3:
                 month_ltr = "MAR";
                 break;
-            case "04":
+            case 4:
                 month_ltr = "APR";
                 break;
-            case "05":
+            case 5:
                 month_ltr = "MAY";
                 break;
-            case "06":
+            case 6:
                 month_ltr = "JUN";
                 break;
-            case "07":
+            case 7:
                 month_ltr = "JUL";
                 break;
-            case "08":
+            case 8:
                 month_ltr = "AUG";
                 break;
-            case "09":
+            case 9:
                 month_ltr = "SEP";
                 break;
-            case "10":
+            case 10:
                 month_ltr = "OCT";
                 break;
-            case "11":
+            case 11:
                 month_ltr = "NOV";
                 break;
-            case "12":
+            case 12:
                 month_ltr = "DEC";
                 break;
         }
