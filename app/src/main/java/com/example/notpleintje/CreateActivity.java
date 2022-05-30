@@ -1,7 +1,10 @@
 package com.example.notpleintje;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -24,6 +27,7 @@ import java.sql.Time;
 
 public class CreateActivity extends AppCompatActivity {
     private ImageView backBtn;
+    private TextView locationError;
     private Spinner eventTypeSpinner;
     String title;
 
@@ -39,6 +43,9 @@ public class CreateActivity extends AppCompatActivity {
                 startActivity(new Intent(CreateActivity.this, HomeActivity.class));
             }
         });
+
+        locationError = (TextView) findViewById(R.id.location_error);
+        locationError.setVisibility(View.GONE);
 
         eventTypeSpinner = (Spinner) findViewById(R.id.event_type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.event_types, android.R.layout.simple_spinner_item);
@@ -69,18 +76,44 @@ public class CreateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String locationInput = locationInputter.getText().toString();
 
-                String descInput = descInputter.getText().toString();
+                if (locationInput.isEmpty()){
+                    locationError.setVisibility(View.VISIBLE);
+                    NestedScrollView scroller = (NestedScrollView) findViewById(R.id.scroll_view);
+                    scroller.scrollTo(0,0);
+                }
+                else {
+                    String descInput = descInputter.getText().toString();
 
-                String time = Integer.toString(timeInputter.getHour()) + ":" + Integer.toString(timeInputter.getMinute());
-                String day = Integer.toString(dateInputter.getDayOfMonth());
-                int monthNum = dateInputter.getMonth()+1;
-                String monthLtr = monthNumToLtr(monthNum);
-                String creator = "test creator";
+                    String time = Integer.toString(timeInputter.getHour()) + ":" + Integer.toString(timeInputter.getMinute());
+                    String day = Integer.toString(dateInputter.getDayOfMonth());
+                    int monthNum = dateInputter.getMonth() + 1;
+                    String monthLtr = monthNumToLtr(monthNum);
+                    String creator = "test creator";
 
-                EventsRepo.getEventsRepo().addEvent(day, monthLtr, title, locationInput, time, creator, descInput);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateActivity.this);
+                    builder.setCancelable(true);
+                    builder.setTitle("Create event?");
+                    String eventInfo = "Activity: " + title + "\nLocation: " + locationInput + "\nDate: " + day + "-" + monthNum + "-" + dateInputter.getYear() + "\nTime: " + time + "\nDescription: " + descInput;
+                    builder.setMessage(eventInfo);
+                    builder.setPositiveButton("Confirm",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    EventsRepo.getEventsRepo().addEvent(day, monthLtr, title, locationInput, time, creator, descInput);
 
-                Toast.makeText(getApplicationContext(), "Event created!", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(CreateActivity.this, HomeActivity.class));
+                                    Toast.makeText(getApplicationContext(), "Event created!", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(CreateActivity.this, HomeActivity.class));
+                                }
+                            });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         });
     }
